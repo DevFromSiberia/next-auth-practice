@@ -7,7 +7,7 @@ export default function Home() {
         <h1 className="w-fit mx-auto text-2xl">Main Page</h1>
         <Link
           className="mx-auto mt-10 py-4 px-10 bg-slate-800 text-sky-50 rounded-2xl uppercase"
-          href="/auth"
+          href="/auth/login"
         >
           auth
         </Link>

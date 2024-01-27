@@ -1,13 +1,13 @@
 "use server";
 
-import { signIn } from "@/auth";
+import { signIn } from "@/app/lib/auth";
 
-export async function authenticate(formData: FormData) {
+export async function authenticate(formData) {
   try {
     await signIn("credentials", formData);
   } catch (error) {
     if (error) {
-      switch (error.type) {
+      switch (error) {
         case "CredentialsSignin":
           return "Invalid credentials.";
         default:
