@@ -1,3 +1,17 @@
-export async function signIn(credentials: string, formData: FormData) {
-   
-}
+import { AuthOptions, User } from "next-auth";
+import CredentialsProvider from "next-auth/providers/credentials";
+
+export const authOptions: AuthOptions = {
+  providers: [
+    CredentialsProvider({
+      name: "Credentials",
+      credentials: {
+        email: { label: "email", type: "email" },
+        password: { label: "password", type: "password" },
+      },
+      async authorize(credentials) {
+        return null;
+      },
+    }),
+  ],
+};
