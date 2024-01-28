@@ -1,20 +1,26 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import {useState} from 'react'
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
+  const [loginValue, setLoginValue] = useState("");
+  const [passValue, setPassValue] = useState("");
 
-  const [loginValue, setLoginValue] = useState('')
-  const [passValue, setPassValue] = useState('')
+  const router = useRouter();
 
-  const formHandler = (e) => {
+  const formHandler = async (e) => {
     e.preventDefault();
-    signIn('credentials', {
+    const res = await signIn("credentials", {
       email: loginValue,
       password: passValue,
-      redirect:false
-    })
+      redirect: false,
+    });
+
+    if (res?.ok) {
+      router.push("/profile");
+    }
   };
 
   function LoginButton() {
